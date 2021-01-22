@@ -333,7 +333,6 @@ def main():
         elif is_validated_morse_code(user_input):
             print(decoding_sentence(user_input))
         elif is_validated_english_sentence(user_input):
-            print("validate sentence")
             print(encoding_sentence(user_input))
         else:
             print("Wrong Input")
