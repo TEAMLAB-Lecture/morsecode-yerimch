@@ -276,7 +276,7 @@ def decoding_sentence(morse_sentence):
             result+=str(decoding_character(temp_morse))
             result+=" "
             temp_morse=""            
-    return result
+    return result.strip(" ")
     # ==================================
 
 
