@@ -92,11 +92,14 @@ def is_validated_english_sentence(user_input):
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
     result = None
-    temp_str=user_input.strip()
+    temp_str=user_input.strip().upper()
     temp_cnt=0
     morse_code_dict = get_morse_code_dict()
     for char in temp_str:
         if char=="." or char=="," or char=="!" or char=="?" or char==" ":
+            continue
+        elif char in morse_code_dict.keys():
+            temp_cnt+=1
             continue
         else:
             return False
@@ -302,7 +305,8 @@ def encoding_sentence(english_sentence):
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
     result = ""
     temp_str=get_cleaned_english_sentence(english_sentence)
-    for idx in range(len(temp_str)):
+    idx=0
+    while idx<len(temp_str):
         cnt=0
         while temp_str[idx]==" ":
             cnt+=1
@@ -312,6 +316,7 @@ def encoding_sentence(english_sentence):
             result+=" "
         else:
             result+=" "
+        idx+=1
     return result.strip(" ")
     # ==================================
 
@@ -328,6 +333,7 @@ def main():
         elif is_validated_morse_code(user_input):
             print(decoding_sentence(user_input))
         elif is_validated_english_sentence(user_input):
+            print("validate sentence")
             print(encoding_sentence(user_input))
         else:
             print("Wrong Input")
