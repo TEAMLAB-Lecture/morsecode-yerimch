@@ -178,7 +178,7 @@ def get_cleaned_english_sentence(raw_english_sentence):
     result=result.replace(",","")
     result=result.replace("!","")
     result=result.replace("?","")
-    return result.upper()
+    return result
     # ==================================
 
 
@@ -312,11 +312,11 @@ def encoding_sentence(english_sentence):
             cnt+=1
             idx+=1
         if cnt==0:
-            result+=str(encoding_character(temp_str[idx]))
+            result+=str(encoding_character(temp_str[idx].upper()))
             result+=" "
+            idx+=1
         else:
             result+=" "
-        idx+=1
     return result.strip(" ")
     # ==================================
 
